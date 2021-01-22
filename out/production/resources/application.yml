@@ -3,7 +3,7 @@ spring:
     url: jdbc:mysql://localhost:3306/
     username: root
     password: 1234
-    data-username: aggim
+    data-username: root
     data-password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
