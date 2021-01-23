@@ -26,6 +26,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.mindrot:jbcrypt:0.4'
     runtimeOnly 'mysql:mysql-connector-java'
+    implementation "com.auth0:java-jwt:3.8.1"
 }
 
 compileKotlin {
