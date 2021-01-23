@@ -3,6 +3,10 @@ package com.example.aggim.domain.user
 import java.util.*
 import javax.persistence.*
 
+/*
+    Created by Seohyun Kim at 2021/01/22
+ */
+
 @Entity(name = "user")
 class User (
     var email: String,

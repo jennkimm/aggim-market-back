@@ -4,6 +4,10 @@ import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import java.util.*
 
+/*
+    Created by Seohyun Kim at 2021/01/22
+ */
+
 object JWTUtil {
     private const val ISSUER = "AGGIM"
     private const val SUBJECT = "Auth"

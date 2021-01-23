@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
+/*
+    Created by Seohyun Kim at 2021/01/21
+ */
+
 @RestController
 @RequestMapping("/api/v1")
 class UserApiController @Autowired constructor(
