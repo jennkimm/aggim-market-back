@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.mindrot.jbcrypt.BCrypt
 
+/*
+    Created by Seohyun Kim at 2021/01/21
+ */
+
 @Service
 class SignupService @Autowired constructor(
     private val userRepository: UserRepository

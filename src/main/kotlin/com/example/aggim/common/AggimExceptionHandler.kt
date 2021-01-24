@@ -5,6 +5,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestController
 
+/*
+    Created by Seohyun Kim at 2021/01/20
+ */
+
 @ControllerAdvice
 @RestController
 class AggimExceptionHandler {

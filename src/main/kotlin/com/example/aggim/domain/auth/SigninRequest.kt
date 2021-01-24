@@ -1,11 +1,10 @@
 package com.example.aggim.domain.auth
 
 /*
-    Created by Seohyun Kim at 2021/01/21
+    Created by Seohyun Kim at 2021/01/22
  */
 
-data class SignupRequest(
+class SigninRequest (
     val email: String,
-    val name: String,
     val password: String
 )
