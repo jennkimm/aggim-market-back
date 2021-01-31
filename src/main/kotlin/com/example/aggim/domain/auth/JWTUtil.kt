@@ -2,11 +2,13 @@ package com.example.aggim.domain.auth
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
+import com.auth0.jwt.interfaces.DecodedJWT
 import java.util.*
 
 /*
     Created by Seohyun Kim at 2021/01/22
- */
+    Updated by Seohyun Kim at 2021/01/30
+*/
 
 object JWTUtil {
     private const val ISSUER = "AGGIM"
@@ -35,6 +37,21 @@ object JWTUtil {
         .withExpiresAt(Date(Date().time + REFRESH_EXPIRE_TIME))
         .withClaim(JWTClaims.EMAIL, email)
         .sign(refreshAlgorithm)
+
+    fun verify(token: String): DecodedJWT =
+        JWT.require(algorithm)
+            .withIssuer(ISSUER)
+            .build()
+            .verify(token)
+
+    fun verifyRefresh(token: String): DecodedJWT =
+        JWT.require(refreshAlgorithm)
+            .withIssuer(ISSUER)
+            .build()
+            .verify(token)
+
+    fun extractEmail(jwt: DecodedJWT): String =
+        jwt.getClaim(JWTClaims.EMAIL).asString()
 
     object JWTClaims {
         const val EMAIL = "email"
