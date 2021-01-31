@@ -31,7 +31,6 @@ class ProductRegistrationService @Autowired constructor(
                         throw AggimException("이미 등록된 상품입니다.")
                 }
             }
-
     private fun save(product: Product) = productRepository.save(product)
 
 }
