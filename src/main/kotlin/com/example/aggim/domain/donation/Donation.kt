@@ -3,12 +3,12 @@ package com.example.aggim.domain.donation
 import javax.persistence.*
 
 @Entity(name="donation")
-class Donation(
+data class Donation(
     var name: String,
-    var goalVal: Int,
-    @OneToMany
-    @JoinColumn(name="donationId")
-    var donates: MutableList<Donate>
+    var goalVal: Int
+//    @OneToMany
+//    @JoinColumn(name="donationId")
+//    var donates: MutableList<Donation>
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
