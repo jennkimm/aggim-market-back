@@ -1,15 +1,13 @@
 package com.example.aggim.domain.donation
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity(name="donate")
-class Donate(
+data class Donate(
     var donatedVal: Int,
     var userId: Long,
-    var donationId:Long ?= null
+    @OneToOne
+    var donation: Donation ?= null
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
