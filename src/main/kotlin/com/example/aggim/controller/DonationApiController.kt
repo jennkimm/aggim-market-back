@@ -1,29 +1,37 @@
 package com.example.aggim.controller
 
+import com.example.aggim.common.AggimException
 import com.example.aggim.common.ApiResponse
-import com.example.aggim.domain.donation.registration.DonateRegistrationRequest
-import com.example.aggim.domain.donation.registration.DonateRegistrationService
-import com.example.aggim.domain.donation.registration.DonationRegistrationRequest
-import com.example.aggim.domain.donation.registration.DonationRegistrationService
+import com.example.aggim.domain.donate.DonateResponse
+import com.example.aggim.domain.donate.toDonateResponse
+import com.example.aggim.domain.donation.Donate
+import com.example.aggim.domain.donation.DonateRepository
+import com.example.aggim.domain.donation.DonateService
+import com.example.aggim.domain.donation.registration.*
+import com.example.aggim.domain.product.Product
+import com.example.aggim.domain.product.ProductService
 import com.example.aggim.domain.product.registration.ProductRegistrationRequest
+import com.example.aggim.domain.product.toProductResponse
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 
 @RestController
 @RequestMapping("/api/v1")
 class DonationApiController @Autowired constructor(
-    private val donateRegistrationService: DonateRegistrationService,
     private val donationRegistration: DonationRegistrationService,
-    private val donateRegistration: DonateRegistrationService
+    private val donateRegistration: DonateRegistrationService,
+    private val donateService: DonateService
 ) {
     @PostMapping("/donates")
     fun registerDonate(
         @RequestBody request: DonateRegistrationRequest
     ) = ApiResponse.ok(donateRegistration.registerDonate(request))
+
+    @GetMapping("/donates")
+    fun get() = donateService.get()?.let{
+        ApiResponse.ok(it)
+    } ?: throw AggimException("기부 정보를 찾을 수 없습니다.")
 
     @PostMapping("/donations")
     fun register(

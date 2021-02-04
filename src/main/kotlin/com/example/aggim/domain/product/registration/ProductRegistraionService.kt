@@ -12,7 +12,6 @@ class ProductRegistrationService @Autowired constructor(
     private val productImageRepository: ProductImageRepository,
     private val userContextHolder: UserContextHolder
 ) {
-
     fun register(request: ProductRegistrationRequest) =
         userContextHolder.id?.let { userId ->
             val images by lazy { findAndValidateImages(request.imageIds) }

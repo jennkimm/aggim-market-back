@@ -5,6 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.domain.Pageable
 
 interface ProductRepository : JpaRepository<Product, Long> {
+    fun findByIdIn(productId: List<Long>): MutableList<Product>
+
+    override fun getOne(productId: Long): Product
+
     fun findByCategoryIdAndIdGreaterThanOrderByIdDesc(
         categoryId: Int?, id: Long, pageable: Pageable
     ): List<Product>
