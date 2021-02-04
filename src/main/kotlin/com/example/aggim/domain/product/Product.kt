@@ -1,5 +1,7 @@
 package com.example.aggim.domain.product
 
+import com.example.aggim.domain.order.Order
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity(name = "product")
@@ -21,4 +23,9 @@ class Product(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @JoinColumn(name="orderId")
+    lateinit var order: Order
 }

@@ -3,7 +3,7 @@ package com.example.aggim.domain.donation
 import javax.persistence.*
 
 @Entity(name="donate")
-data class Donate(
+class Donate(
     var donatedVal: Int,
     var userId: Long,
     @OneToOne
