@@ -17,6 +17,7 @@ class Product(
     var images: MutableList<ProductImage>,
     val userId: Long
 ) {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null

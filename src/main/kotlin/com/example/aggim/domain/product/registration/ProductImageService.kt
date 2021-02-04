@@ -27,7 +27,7 @@ class ProductImageService @Autowired constructor(
         val productImage = saveImageData(filePath)
 
         return productImage.id?.let {
-            ProductImageUploadResponse(it, filePath)
+            ProductImageUploadResponse(it, "/images/20210202/cakedd.jpg")
         } ?: throw AggimException("이미지 저장 실패. 다시 시도해주세요.")
     }
 
@@ -39,10 +39,10 @@ class ProductImageService @Autowired constructor(
         val uuid = UUID.randomUUID().toString()
         val date = SimpleDateFormat("yyyyMMdd").format(Date())
 
-        val filePath = "/images/$date/$uuid.$extension"
+        val filePath = "/images/$date/cakedd.$extension"
         val targetFile = File("$uploadPath/$filePath")
         val thumbnail = targetFile.absolutePath
-            .replace(uuid, "$uuid-thumb")
+            .replace(uuid, "cakedd-thumb")
             .let(::File)
 
         targetFile.parentFile.mkdirs()
