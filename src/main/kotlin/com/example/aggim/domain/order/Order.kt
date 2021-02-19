@@ -7,15 +7,17 @@ import java.util.*
 import javax.persistence.*
 
 @Entity(name="orders")
-data class Order (
+class Order (
     @Column(length = 40)
     var name: String,
     val userId: Long,
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-    var products: MutableList<Product>
+    @OneToMany
+    @JoinColumn(name="order_id")
+    var orderProducts: MutableList<OrderProduct>
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="order_id")
     open var id: Long? = null
 
     open var createdAt: Date? = null
