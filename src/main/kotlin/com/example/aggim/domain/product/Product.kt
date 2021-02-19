@@ -1,6 +1,7 @@
 package com.example.aggim.domain.product
 
 import com.example.aggim.domain.order.Order
+import com.example.aggim.domain.order.OrderProduct
 import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
@@ -19,13 +20,11 @@ class Product(
     var images: MutableList<ProductImage>,
     val userId: Long
 ) {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="product_id")
     var id: Long? = null
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
-    @JoinColumn(name="orderId")
-    lateinit var order: Order
+//    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+//    lateinit var orderProducts: MutableList<OrderProduct>
 }

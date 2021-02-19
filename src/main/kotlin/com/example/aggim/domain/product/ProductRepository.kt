@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.domain.Pageable
 
 interface ProductRepository : JpaRepository<Product, Long> {
-    fun findByIdIn(productId: List<Long>): MutableList<Product>
+    fun findByIdIn(productIds: List<Long>): MutableList<Product>
 
     override fun getOne(productId: Long): Product
 
