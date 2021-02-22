@@ -7,6 +7,7 @@ import com.example.aggim.domain.donate.toDonateResponse
 import com.example.aggim.domain.donation.Donate
 import com.example.aggim.domain.donation.DonateRepository
 import com.example.aggim.domain.donation.DonateService
+import com.example.aggim.domain.donation.DonationService
 import com.example.aggim.domain.donation.registration.*
 import com.example.aggim.domain.product.Product
 import com.example.aggim.domain.product.ProductService
@@ -21,7 +22,8 @@ import org.springframework.web.multipart.MultipartFile
 class DonationApiController @Autowired constructor(
     private val donationRegistration: DonationRegistrationService,
     private val donateRegistration: DonateRegistrationService,
-    private val donateService: DonateService
+    private val donateService: DonateService,
+    private val donationService: DonationService
 ) {
     @PostMapping("/donates")
     fun registerDonate(
@@ -37,4 +39,9 @@ class DonationApiController @Autowired constructor(
     fun register(
         @RequestBody request: DonationRegistrationRequest
     ) = ApiResponse.ok(donationRegistration.register(request))
+
+    @GetMapping("/donations")
+    fun getDonations() = donationService.get()?.let {
+        ApiResponse.ok(it)
+    } ?: throw AggimException("기부처 정보를 찾을 수 없습니다.")
 }
