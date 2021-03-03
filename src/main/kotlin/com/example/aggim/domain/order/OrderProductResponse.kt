@@ -4,8 +4,8 @@ import com.example.aggim.domain.product.Product
 
 data class OrderProductResponse(
     val id: Long,
-    val product_id: Long,
-    val order_id: Long
+    val productId: Long,
+    val orderId: Long
 //    val product: Product,
 //    val order: Order
 //    val productId: Long,
@@ -15,8 +15,8 @@ data class OrderProductResponse(
 fun OrderProduct.toOrderProductResponse() = id?.let {
     OrderProductResponse(
         it,
-        product_id,
-        order_id
+        productId,
+        orderId
 //        product!!,
 //        order!!
 //        product?.id ?: -1,

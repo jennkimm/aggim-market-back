@@ -5,8 +5,8 @@ import javax.persistence.*
 
 @Entity(name="order_product")
 class OrderProduct(
-    val product_id: Long,
-    val order_id: Long
+    val productId: Long,
+    val orderId: Long
     ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,10 +14,10 @@ class OrderProduct(
     open var id: Long? = null
 
     @ManyToOne
-    @JoinColumn(name="product_id", insertable = false, updatable = false)
+    @JoinColumn(name="productId", insertable = false, updatable = false)
     var product: Product?=null
-//
+
 //    @ManyToOne
-//    @JoinColumn(name="order_id", insertable = false, updatable = false)
+//    @JoinColumn(name="orderId", insertable = false, updatable = false)
 //    var order: Order?=null
 }

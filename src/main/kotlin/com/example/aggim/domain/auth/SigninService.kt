@@ -38,7 +38,8 @@ class SigninService @Autowired constructor(
             JWTUtil.createToken(user.email),
             JWTUtil.createRefreshToken(user.email),
             user.name,
-            userId
+            userId,
+            user.email
         )
     } ?: throw IllegalStateException("user.id 없음.")
 
