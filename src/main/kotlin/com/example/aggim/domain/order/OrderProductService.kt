@@ -15,6 +15,11 @@ class OrderProductService @Autowired constructor(
     private val productService: ProductService,
     private val orderService : OrderService
 ){
+    fun getO() = orderProductRepository.findAll()
+
+    fun getOr(orderId: Long) = orderProductRepository.findByOrderId(orderId).let{
+        print("hihiplease")
+    }
 
     fun register(request: OrderProductRequest) {
         val product = productService.get(request.productId)

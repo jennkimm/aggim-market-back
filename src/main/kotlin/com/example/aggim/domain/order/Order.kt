@@ -12,7 +12,7 @@ class Order (
     var name: String,
     val userId: Long,
     @OneToMany
-    @JoinColumn(name="order_id")
+    @JoinColumn(name="orderId")
     var orderProducts: MutableList<OrderProduct>
 ) {
     @Id
