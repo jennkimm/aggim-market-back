@@ -5,7 +5,8 @@ import javax.persistence.*
 @Entity(name="donation")
 data class Donation(
     var name: String,
-    var goalVal: Int
+    var goalVal: Int,
+    var donatedVal: Int = 0
 //    @OneToMany
 //    @JoinColumn(name="donationId")
 //    var donates: MutableList<Donation>

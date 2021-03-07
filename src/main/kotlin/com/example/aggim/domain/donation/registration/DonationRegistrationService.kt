@@ -15,7 +15,7 @@ class DonationRegistrationService  @Autowired constructor(
     private val userContextHolder: UserContextHolder
     ) {
     fun register(request: DonationRegistrationRequest) =
-        DonationRepository.save(Donation(request.name, request.goalVal))
+        DonationRepository.save(Donation(request.name, request.goalVal, 0))
 ////        userContextHolder.id?.let { userId ->
 ////            val donations by lazy { findAndValidateDonates(request.donationIds) }
 //            request.toDonation(donations)
@@ -48,6 +48,7 @@ private fun DonationRegistrationRequest.toDonation(
     donations: MutableList<Donation>
 )=Donation(
     name,
-    goalVal
+    goalVal,
+    0
 //    donations
 )
