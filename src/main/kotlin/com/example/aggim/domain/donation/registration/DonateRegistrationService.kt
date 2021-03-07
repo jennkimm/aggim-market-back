@@ -21,9 +21,10 @@ class DonateRegistrationService  @Autowired constructor(
             val donation by lazy{ donationRepository.getOne(request.donationId) }
             request.toDonate(donation, userId)
                 .run(::save)
-
+            donation.donatedVal = donation.donatedVal+request.donatedVal
+            donationRepository.save(donation)
             return donation.id?.let {
-                DonateRegistrationResponse(it, donation.name, donation.goalVal)
+                DonateRegistrationResponse(it, donation.name, donation.goalVal, request.donatedVal)
             } ?: throw AggimException("기부처정보 저장 실패. 다시 시도해주세요.")
             //donateRepository.save(Donate(request.donatedVal, userId, donation))
         } ?: throw AggimException(
